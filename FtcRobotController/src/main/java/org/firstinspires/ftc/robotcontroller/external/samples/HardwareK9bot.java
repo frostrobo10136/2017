@@ -62,8 +62,8 @@ public class HardwareK9bot
 
     public final static double ARM_HOME = 0.2;
     public final static double CLAW_HOME = 0.2;
-    public final static double ARM_MIN_RANGE  = 0.20;
-    public final static double ARM_MAX_RANGE  = 0.90;
+    public static double ARM_MIN_RANGE  = 0.20;
+    public static double ARM_MAX_RANGE  = 0.90;
     public final static double CLAW_MIN_RANGE  = 0.20;
     public final static double CLAW_MAX_RANGE  = 0.7;
 

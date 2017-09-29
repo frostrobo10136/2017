@@ -29,7 +29,6 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
@@ -53,9 +52,9 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="K9bot: Telop Tank", group="K9bot")
+@TeleOp(name="Relic Recovery", group="RRbot")
 //@Disabled
-public class TeleopTank_LinearOpMode extends LinearOpMode {
+public class TeleOpRelicRecovery_Linear extends LinearOpMode {
 
     /* Declare OpMode members. */
     HardwareK9bot   robot           = new HardwareK9bot();              // Use a K9'shardware
@@ -102,15 +101,18 @@ public class TeleopTank_LinearOpMode extends LinearOpMode {
             else if (gamepad1.b)
                 clawPosition -= CLAW_SPEED;
 
+            robot.ARM_MIN_RANGE = 90;
+            robot.ARM_MAX_RANGE = 0;
+
             // Move both servos to new position.
             armPosition  = Range.clip(armPosition, robot.ARM_MIN_RANGE, robot.ARM_MAX_RANGE);
             robot.arm.setPosition(armPosition);
-            clawPosition = Range.clip(clawPosition, robot.CLAW_MIN_RANGE, robot.CLAW_MAX_RANGE);
-            robot.claw.setPosition(clawPosition);
+            //clawPosition = Range.clip(clawPosition, robot.CLAW_MIN_RANGE, robot.CLAW_MAX_RANGE);
+            //robot.claw.setPosition(clawPosition);
 
             // Send telemetry message to signify robot running;
             telemetry.addData("arm",   "%.2f", armPosition);
-            telemetry.addData("claw",  "%.2f", clawPosition);
+            //telemetry.addData("claw",  "%.2f", clawPosition);
             telemetry.addData("left",  "%.2f", left);
             telemetry.addData("right", "%.2f", right);
             telemetry.update();
