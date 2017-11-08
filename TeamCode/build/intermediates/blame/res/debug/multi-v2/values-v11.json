@@ -1,6 +1,22 @@
 {
     "logs": [
         {
+            "outputFile": "/Users/bill/dev/robotics/2017/TeamCode/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
+            "map": [
+                {
+                    "source": "/Users/bill/.gradle/caches/transforms-1/files-1.1/RobotCore-release.aar/ceafe7960f1938e2fd1b8c0560d0ac36/res/values-v11/values-v11.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "187"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/bill/dev/robotics/ftc_app/TeamCode/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v11/values-v11.xml",
             "map": [
                 {
