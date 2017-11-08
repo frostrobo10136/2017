@@ -52,23 +52,23 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  *   As the arm servo approaches 0, the arm position moves up (away from the floor).
  *   As the claw servo approaches 0, the claw opens up (drops the game element).
  */
-public class HardwareK9bot_team10136 {
+public class HardwareK9bot_team10136
+{
     /* Public OpMode members. */
     public DcMotor  leftFrontDrive  = null;
     public DcMotor  rightFrontDrive = null;
     public DcMotor  leftBackDrive   = null;
     public DcMotor  rightBackDrive  = null;
+    public DcMotor  liftMotor  = null;
     public Servo    arm             = null;
     public Servo    leftClaw        = null;
     public Servo    rightClaw       = null;
 
-    // Arm
-    public final static double  VERTICAL_ARM_HOME = 1.0;
-    public final static double  HORIZONTAL_ARM_HOME = -0.6;
-    public static double        ARM_MIN_RANGE  = 0.20;
-    public static double        ARM_MAX_RANGE  = 0.90;
+    public final static double VERTICAL_ARM_HOME = 0.9;
+    public final static double HORIZONTAL_ARM_HOME = 0.2;
+    public static double ARM_MIN_RANGE  = 0.2;
+    public static double ARM_MAX_RANGE  = 0.7;
 
-    // Claw
     public final static double LEFT_CLAW_HOME = 0.2;
     public final static double LEFT_CLAW_MIN_RANGE  = 0.2;
     public final static double LEFT_CLAW_MAX_RANGE  = 0.7;
@@ -95,14 +95,19 @@ public class HardwareK9bot_team10136 {
         rightFrontDrive = hwMap.get(DcMotor.class, "right front");
         leftBackDrive  = hwMap.get(DcMotor.class, "left back");
         rightBackDrive = hwMap.get(DcMotor.class, "right back");
+        liftMotor = hwMap.get(DcMotor.class, "lift Motor");
         leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
         leftBackDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightBackDrive.setDirection(DcMotor.Direction.FORWARD);
+        liftMotor.setDirection(DcMotor.Direction.REVERSE);
 
         // Set all motors to zero power
         leftFrontDrive.setPower(0);
         rightFrontDrive.setPower(0);
         leftBackDrive.setPower(0);
         rightBackDrive.setPower(0);
+        liftMotor.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
@@ -110,6 +115,7 @@ public class HardwareK9bot_team10136 {
         rightFrontDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftBackDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightBackDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        liftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.
         arm  = hwMap.get(Servo.class, "arm");
